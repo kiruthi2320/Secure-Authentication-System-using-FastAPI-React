@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException, Form
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from passlib.context import CryptContext
+from fastapi.staticfiles import StaticFiles
 from fastapi.openapi.utils import get_openapi
 from fastapi.middleware.cors import CORSMiddleware
 from jose import JWTError, jwt
@@ -9,11 +10,16 @@ import models
 from database import engine, SessionLocal
 from datetime import datetime, timedelta
 import re
+import os
 
 # Create DB tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+# Dynamically set path to frontend/build
+frontend_path = os.path.join(os.path.dirname(__file__), '..', 'frontend', 'build')
+app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
 
 # Allow React frontend access
 app.add_middleware(
