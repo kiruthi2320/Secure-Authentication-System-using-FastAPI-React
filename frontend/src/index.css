@@ -1,0 +1,16 @@
+/* ===== index.css ===== */
+
+/* Reset some base styles */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3eaff;
+}
+
+/* Ensure React root element is full-height and centered */
+#root {
+  align-items: center;
+  justify-content: center;
+}

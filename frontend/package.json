@@ -1,0 +1,40 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^3.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "gh-pages": "^6.3.0"
+  },
+  "homepage": "https://kiruthi2320.github.io/my-portfolio",
+  "scripts": {
+    "start": "concurrently \"npm run react\" \"npm run fastapi\"",
+    "build": "react-scripts build",
+    "react": "react-scripts start",
+    "fastapi": "start cmd.exe /k \"cd ../backend && uvicorn main:app --reload\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
